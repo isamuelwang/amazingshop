@@ -10,11 +10,13 @@
     <div data-options="iconCls:'icon-remove',name:'delete'">删除</div>
 </div>
 <script type="text/javascript">
+//文档加载后处理以下逻辑
 $(function(){
 	$("#contentCategory").tree({
 		url : '/content/category/list',
 		animate: true,
 		method : "GET",
+		//右击鼠标才触发
 		onContextMenu: function(e,node){
             e.preventDefault();
             $(this).tree('select',node.target);
