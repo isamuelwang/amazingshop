@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mall-manager-web:war">
+    <output-path>$PROJECT_DIR$/../mall-manager-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>mall-manager-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="mall-manager-web.war">
+      <element id="artifact" artifact-name="mall-manager-web:war exploded" />
+    </root>
+  </artifact>
+</component>

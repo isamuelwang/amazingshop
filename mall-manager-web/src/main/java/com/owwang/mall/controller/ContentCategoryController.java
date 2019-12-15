@@ -26,7 +26,7 @@ public class ContentCategoryController {
 	@RequestMapping(value="/content/category/list",method=RequestMethod.GET)
 	@ResponseBody
 	public List<EasyUITreeNode> getContentCategoryList(@RequestParam(value="id",defaultValue="0") Long parentId){
-		service.getContentCategooryList(parentId);
-		return null;
+		List<EasyUITreeNode> list = service.getContentCategooryList(parentId);
+		return list;
 	}
 }
