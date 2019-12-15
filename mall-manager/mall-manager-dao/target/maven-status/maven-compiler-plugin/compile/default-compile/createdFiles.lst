@@ -1,0 +1,12 @@
+com\owwang\mall\mapper\TbUserMapper.class
+com\owwang\mall\mapper\TbContentMapper.class
+com\owwang\mall\mapper\TbItemCatMapper.class
+com\owwang\mall\mapper\TbItemDescMapper.class
+com\owwang\mall\mapper\TbItemMapper.class
+com\owwang\mall\mapper\TestMapper.class
+com\owwang\mall\mapper\TbOrderMapper.class
+com\owwang\mall\mapper\TbContentCategoryMapper.class
+com\owwang\mall\mapper\TbItemParamItemMapper.class
+com\owwang\mall\mapper\TbItemParamMapper.class
+com\owwang\mall\mapper\TbOrderItemMapper.class
+com\owwang\mall\mapper\TbOrderShippingMapper.class

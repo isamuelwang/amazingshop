@@ -1,6 +1,8 @@
 package com.owwang.mall.pojo;
 
-public class EasyUITreeNode {
+import java.io.Serializable;
+
+public class EasyUITreeNode implements Serializable {
 	private Long id;
 	private String text;
 	private String state;
