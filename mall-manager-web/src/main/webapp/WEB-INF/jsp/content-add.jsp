@@ -50,6 +50,7 @@
 	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="contentAddPage.clearForm()">重置</a>
 	</div>
 </div>
+
 <script type="text/javascript">
 	var contentAddEditor ;
 	$(function(){

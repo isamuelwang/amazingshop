@@ -18,19 +18,26 @@ $(function(){
 		method : "GET",
 		//右击鼠标才触发
 		onContextMenu: function(e,node){
+		    //关闭原来鼠标的默认事件
             e.preventDefault();
+            //右击选中节点
             $(this).tree('select',node.target);
+            //展示菜单
             $('#contentCategoryMenu').menu('show',{
-                left: e.pageX,
+                left: e.pageX, //在鼠标的位置显示
                 top: e.pageY
             });
         },
+        //在节点编辑之后触发
         onAfterEdit : function(node){
+		    //获取树本身
         	var _tree = $(this);
+        	//表示新增的节点
         	if(node.id == 0){
         		// 新增节点
         		$.post("/content/category/create",{parentId:node.parentId,name:node.text},function(data){
         			if(data.status == 200){
+        			    //更新节点
         				_tree.tree("update",{
             				target : node.target,
             				id : data.data.id
@@ -45,19 +52,26 @@ $(function(){
         }
 	});
 });
+//处理点击菜单事件
 function menuHandler(item){
+    //获取树
 	var tree = $("#contentCategory");
+	//获取被选中节点
 	var node = tree.tree("getSelected");
+	//判断添加、重命名、删除
 	if(item.name === "add"){
+	    //点击添加触发
 		tree.tree('append', {
-            parent: (node?node.target:null),
+            parent: (node?node.target:null),//被添加的子节点的父
             data: [{
-                text: '新建分类',
-                id : 0,
-                parentId : node.id
+                text: '新建分类',//节点名称
+                id : 0,//节点ID
+                parentId : node.id//父节点ID
             }]
-        }); 
+        });
+		//找到ID为0的节点
 		var _node = tree.tree('find',0);
+		//选中ID为0的节点，开始编辑
 		tree.tree("select",_node.target).tree('beginEdit',_node.target);
 	}else if(item.name === "rename"){
 		tree.tree('beginEdit',node.target);

@@ -16,6 +16,7 @@ public class ItemController {
 	private ItemService itemService;
 	
 	/**
+	 * 获取商品信息
 	 * url:/item/list
 	 * method:get
 	 * 参数:page rows
