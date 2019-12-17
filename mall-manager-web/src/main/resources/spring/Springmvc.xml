@@ -16,23 +16,26 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding" value="UTF-8"/>
-		<!-- 不超过8M  -->
-		<property name="maxUploadSize" value="8388608"/>
-	</bean>
-
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="mall-manager-web" />
 	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181" />
 	<dubbo:reference interface="com.owwang.mall.service.TestService" id="testService" />
 	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" />
+	<dubbo:reference interface="com.owwang.mall.service.PictureService" id="pictureService" />
 	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" />
 	<dubbo:reference interface="com.owwang.mall.content.service.ItemCatService" id="itemCatService" />
 
 	<!-- 静态资源不设卡 -->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
+
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
 
 </beans>
