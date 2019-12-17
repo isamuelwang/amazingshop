@@ -1,6 +1,5 @@
 package com.owwang.mall.service.impl;
 
-import com.owwang.mall.pojo.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +16,5 @@ public class TestServiceImpl implements TestService {
 	public String queryNow() {
 		return testMapper.queryNow();
 	}
+	
 }

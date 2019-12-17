@@ -35,7 +35,6 @@
 		<activemq.version>5.13.0</activemq.version>
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
-		<jsch.version>0.1.54</jsch.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -44,12 +43,6 @@
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>${joda-time.version}</version>
-			</dependency>
-			<!-- SFTP支持 -->
-			<dependency>
-				<groupId>com.jcraft</groupId>
-				<artifactId>jsch</artifactId>
-				<version>${jsch.version}</version>
 			</dependency>
 			<!-- Apache工具组件 -->
 			<dependency>

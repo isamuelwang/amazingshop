@@ -14,11 +14,6 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
-		<!-- SFTP支持 -->
-		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jsch</artifactId>
-		</dependency>
 		<!-- Apache工具组件 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
