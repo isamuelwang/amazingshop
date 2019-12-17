@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -21,10 +23,10 @@ public class PictureController {
 
     @RequestMapping("/pic/upload")
     @ResponseBody
-    public SFTPUploadResult pictureUpload(MultipartFile uploadFile){
+    public SFTPUploadResult pictureUpload(byte[] bytes, String name){
+        InputStream inputStream = new ByteArrayInputStream(bytes);
 
-
-        SFTPUploadResult result = pictureService.uploadPicture(uploadFile);
+        SFTPUploadResult result = pictureService.uploadPicture(inputStream,name);
         return result;
     }
 }
