@@ -9,12 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 @Service
 public class PictureServiceImpl implements PictureService {
@@ -34,28 +31,38 @@ public class PictureServiceImpl implements PictureService {
     private String IMAGE_BASE_URL;
 
     @Override
-    public SFTPUploadResult uploadPicture(InputStream inputStream,String name){
+    public SFTPUploadResult uploadPicture(byte[] pic,String oldName){
         SFTPUploadResult sftpUploadResult = new SFTPUploadResult();
+        if(pic==null||pic.length==0){
+            sftpUploadResult.setError(1);
+            sftpUploadResult.setMessage("空文件");
+            return sftpUploadResult;
+        }
+        InputStream inputStream = new ByteArrayInputStream(pic);
         //生成新的文件名
         //生成新文件名
         String newName = IDUtils.genImageName();
         //加后缀
-        newName = newName + name.substring((name.lastIndexOf(".")));
-        //图片上传
+        newName = newName + oldName.substring((oldName.lastIndexOf(".")));
+        //创建sftp工具类对象
         Sftp sftp = new Sftp(SFTP_ADDRESS,SFTP_PORT,SFTP_TIMEOUT,SFTP_USERNAME,SFTP_PASSWORD);
-        String  dataPath = new DateTime().toString("/yyyy/MM/dd");
-        String pathName = "/home/ftpuser/www/images"+dataPath;
         sftp.login();
+        String  dataPath = new DateTime().toString("/yyyy-MM-dd");
+        String pathName = "/home/ftpuser/www/images"+dataPath;
+        sftp.changeDir("/home/ftpuser/www/images");
+        sftp.makeDir(dataPath.substring(1));
+        //执行文件上传！
         boolean result = sftp.uploadFile(pathName,newName,inputStream);
         sftp.logout();
+        //上传失败时，回传信息
         if(!result){
             sftpUploadResult.setError(1);
             sftpUploadResult.setMessage("文件上传失败");
             return sftpUploadResult;
         }
-        sftpUploadResult.setError(0);
         String httpPath = IMAGE_BASE_URL + dataPath + "/" + newName;
         sftpUploadResult.setUrl(httpPath);
+        sftpUploadResult.setError(0);
         return sftpUploadResult;
     }
 }

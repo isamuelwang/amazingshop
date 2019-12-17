@@ -1,6 +1,8 @@
 package com.owwang.mall.pojo;
 
-public class PicUploadResult {
+import java.io.Serializable;
+
+public class PicUploadResult implements Serializable {
     private Integer error;
     private String width;
     private String height;

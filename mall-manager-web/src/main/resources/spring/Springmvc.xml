@@ -23,14 +23,15 @@
 		<property name="maxUploadSize" value="8388608"/>
 	</bean>
 
+
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="mall-manager-web" />
-	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181" />
-	<dubbo:reference interface="com.owwang.mall.service.TestService" id="testService" />
-	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" />
-	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" />
-	<dubbo:reference interface="com.owwang.mall.content.service.ItemCatService" id="itemCatService" />
-
+	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181"/>
+	<dubbo:reference interface="com.owwang.mall.service.TestService" id="testService" timeout="150000"/>
+	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ItemCatService" id="itemCatService" timeout="150000"/>
+	<dubbo:reference protocol="hessian" interface="com.owwang.mall.service.PictureService" id="pictureService" timeout="300000" />
 	<!-- 静态资源不设卡 -->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
