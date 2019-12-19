@@ -18,6 +18,7 @@
 	<dubbo:protocol name="dubbo" port="20881" />
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.owwang.mall.content.service.ContentCategoryService" ref="contentCategoryServiceImpl" />
+	<dubbo:service interface="com.owwang.mall.content.service.ContentService" ref="contentServiceImpl" />
 	<dubbo:service interface="com.owwang.mall.content.service.ItemCatService" ref="itemCatServiceImpl" />
 </beans>
 

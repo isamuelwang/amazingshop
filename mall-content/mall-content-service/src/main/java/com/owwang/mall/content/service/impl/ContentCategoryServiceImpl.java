@@ -48,6 +48,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		//5.转化result
 		return nodes;
 	}
+	
 
 	@Override
 	public MallResult createContentCategory(Long parentid, String name) {
@@ -72,6 +73,15 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		return MallResult.ok(category);
 	}
 
+	/**
+	 * @Description TODO
+	 * @param
+	 * @param id
+	 * @param name
+	 * @return void
+	 * @data 2019/12/19
+	 * @auther Samuel
+	 */
 	@Override
 	public void updateContentCategory(Long id, String name) {
 		TbContentCategory category = mapper.selectByPrimaryKey(id);

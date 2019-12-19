@@ -32,6 +32,7 @@
 	<dubbo:reference interface="com.owwang.mall.service.ItemParamService" id="itemParamService" timeout="150000" />
 	<dubbo:reference interface="com.owwang.mall.service.ItemParamItemService" id="itemParamItemService" timeout="150000" />
 	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ContentService" id="contentService" timeout="150000" />
 	<dubbo:reference interface="com.owwang.mall.content.service.ItemCatService" id="itemCatService" timeout="150000"/>
 	<dubbo:reference protocol="hessian" interface="com.owwang.mall.service.PictureService" id="pictureService" timeout="300000" />
 	<!-- 静态资源不设卡 -->
