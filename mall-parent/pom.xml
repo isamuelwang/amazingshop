@@ -265,7 +265,6 @@
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<version>2.2</version>
 				</plugin>
-
 				<!-- 配置打包时跳过测试 ，首次配置使用的时候会自动联网进行下载 加到哪就跳过哪-->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

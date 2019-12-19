@@ -1,6 +1,8 @@
 package com.owwang.mall.service;
 
 import com.owwang.mall.pojo.EasyUIDataGriResult;
+import com.owwang.mall.pojo.MallResult;
+import com.owwang.mall.pojo.TbItem;
 
 /**
  * 商品相关处理的service接口
@@ -16,4 +18,12 @@ public interface ItemService {
 	 * @return
 	 */
 	EasyUIDataGriResult getItemList(Integer page,Integer rows);
+
+	/**
+	 * 创建商品
+	 * @param item
+	 * @return
+	 */
+	MallResult createItem(TbItem item,String desc,String itemParam) throws Exception;
+
 }

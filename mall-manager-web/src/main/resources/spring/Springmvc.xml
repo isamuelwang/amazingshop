@@ -29,6 +29,8 @@
 	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181"/>
 	<dubbo:reference interface="com.owwang.mall.service.TestService" id="testService" timeout="150000"/>
 	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.service.ItemParamService" id="itemParamService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.service.ItemParamItemService" id="itemParamItemService" timeout="150000" />
 	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" timeout="150000" />
 	<dubbo:reference interface="com.owwang.mall.content.service.ItemCatService" id="itemCatService" timeout="150000"/>
 	<dubbo:reference protocol="hessian" interface="com.owwang.mall.service.PictureService" id="pictureService" timeout="300000" />
