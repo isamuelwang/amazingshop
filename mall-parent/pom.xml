@@ -4,6 +4,9 @@
 	<groupId>com.owwang</groupId>
 	<artifactId>mall-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<modules>
+		<module>../mall-search-web</module>
+	</modules>
 	<packaging>pom</packaging>
 	<!-- 集中定义依赖版本号 -->
 	<properties>

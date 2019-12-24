@@ -6,7 +6,7 @@
 		<artifactId>mall-manager</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>owwang-manager-service</artifactId>
+	<artifactId>mall-manager-service</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
 		<!-- Hessian -->
@@ -26,13 +26,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- taotao dao依赖 -->
+		<!-- dao依赖 -->
 		<dependency>
 			<groupId>com.owwang</groupId>
 			<artifactId>mall-manager-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<!-- taotao的接口的依赖 -->
+		<!-- 接口的依赖 -->
 		<dependency>
 			<groupId>com.owwang</groupId>
 			<artifactId>mall-manager-interface</artifactId>
