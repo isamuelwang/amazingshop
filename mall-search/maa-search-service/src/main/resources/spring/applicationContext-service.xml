@@ -9,7 +9,7 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 	
-	<context:component-scan base-package="com.owwang.mall.search.service"></context:component-scan>
+	<context:component-scan base-package="com.owwang.mall.search"></context:component-scan>
 	<!-- 使用dubbo发布服务 -->
 	<!-- 提供方应用信息，用于计算依赖关系 -->
 	<dubbo:application name="mall-search" />
