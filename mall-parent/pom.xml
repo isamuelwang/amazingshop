@@ -39,6 +39,7 @@
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
 		<jsch.version>0.1.54</jsch.version>
+		<mail.version>1.4.7</mail.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -122,6 +123,12 @@
 				<artifactId>pagehelper</artifactId>
 				<version>${pagehelper.version}</version>
 			</dependency>
+			<!-- 邮件 -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${mail.version}</version>
+			 </dependency>
 			<!-- MySql -->
 			<dependency>
 				<groupId>mysql</groupId>

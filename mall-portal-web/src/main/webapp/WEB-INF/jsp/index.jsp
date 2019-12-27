@@ -34,6 +34,11 @@
 <div class="w">
 <div id="o-slide">
 <div class="slide" id="slide">
+	<script>
+		var xlm_wid='15473';
+		var xlm_url='https://www.xianliao.me/';
+	</script>
+	<script type='text/javascript' charset='UTF-8' src='https://www.xianliao.me/embed.js'></script>
 <script type="text/javascript">
 ;(function(cfg, doc) {
     if ( !cfg.DATA_MSlide ) {
