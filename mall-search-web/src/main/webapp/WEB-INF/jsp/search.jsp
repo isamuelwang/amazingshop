@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>${query} - 商品搜索 - 淘淘</title>
 <meta name="Keywords" content="java,淘淘java" />
-<meta name="description" content="在淘淘中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
+<meta name="description" content="在欧文商城中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
 <link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
 <link rel="stylesheet" type="text/css" href="/css/psearch20131008.css" media="all" />
 <link rel="stylesheet" type="text/css" href="/css/psearch.onebox.css" media="all" />
@@ -43,20 +43,20 @@
 <c:forEach items="${itemList}" var="item">
 <li class="item-book" bookid="11078102">
 	<div class="p-img">
-		<a target="_blank" href="/item/${item.id }.html">
+		<a target="_blank" href="http://localhost:8087/item/${item.id }.html">
 			<img width="160" height="160" data-img="1" data-lazyload="${item.images[0]}" />
 		</a>
 	</div>
 	<div class="p-name">
-		<a target="_blank" href="/item/${item.id }.html">
+		<a target="_blank" href="http://localhost:8087/item/${item.id }.html">
 			${item.title}
 		</a>
 	</div>
 	<div class="p-price">
-		<i>淘淘价：</i>
+		<i>欧文价：</i>
 		<strong>￥<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${item.price / 100 }"/></strong>
 	</div>
-	<div class="service">由 淘淘 发货</div>
+	<div class="service">由 欧文商城 发货</div>
 	<div class="extra">
 		<span class="star"><span class="star-white"><span class="star-yellow h5">&nbsp;</span></span></span>
 	</div>

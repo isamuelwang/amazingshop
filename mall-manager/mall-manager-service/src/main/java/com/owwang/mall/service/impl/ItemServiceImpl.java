@@ -7,7 +7,10 @@ import com.owwang.mall.mapper.TbItemMapper;
 import com.owwang.mall.mapper.TbItemParamItemMapper;
 import com.owwang.mall.pojo.*;
 import com.owwang.mall.service.ItemService;
+import com.owwang.mall.service.jedis.JedisClient;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
@@ -22,20 +25,92 @@ import java.util.List;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-
     @Autowired
     private TbItemMapper tbItemMapper;
-
     @Autowired
     private TbItemDescMapper itemDescMapper;
-
     @Autowired
     private TbItemParamItemMapper itemParamItemMapper;
-
+    //Redis客户端
+    @Autowired
+    private JedisClient jedisClient;
     @Autowired
     private JmsTemplate jmsTemplate;
     @Resource(name = "topicDestination")
     private Destination destination;
+    @Value("${ITEM_INFO_KEY}")
+    private String ITEM_INFO_KEY;
+    @Value("${ITEM_INFO_EXPIRE}")
+    private int ITEM_INFO_EXPIRE;
+
+    /**
+     * 通过商品ID查询商品详细信息
+     * @Description TODO
+     * @param
+     * @param itemId 商品ID
+     * @return com.owwang.mall.pojo.TbItemDesc
+     * @Date 2019-12-29
+     * @auther Samuel
+     */
+    @Override
+    public TbItemDesc getItemDescById(Long itemId) {
+        try {
+            String jsonStr = jedisClient.get(ITEM_INFO_KEY + ":" + itemId + ":DESC");
+            //判断Redis中是否有缓存
+            if (StringUtils.isNotBlank(jsonStr)) {
+                //设置有效期
+                jedisClient.expire(ITEM_INFO_KEY + ":" + itemId + ":DESC", ITEM_INFO_EXPIRE);
+                //Redis中取数据
+                return JsonUtils.jsonToPojo(jsonStr, TbItemDesc.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //数据库中取数据
+        TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+        //注入缓存
+        try {
+            jedisClient.set(ITEM_INFO_KEY + ":" + itemId + ":DESC", JsonUtils.objectToJson(itemDesc));
+            jedisClient.expire(ITEM_INFO_KEY + ":" + itemId + ":DESC", ITEM_INFO_EXPIRE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemDesc;
+    }
+
+    /**
+     * 通过商品ID查询商品信息
+     * @param itemId 商品ID
+     * @return com.owwang.mall.pojo.TbItem
+     * @Description TODO
+     * @Date 2019-12-29
+     * @auther Samuel
+     */
+    @Override
+    public TbItem getItemById(Long itemId) {
+        try {
+            String jsonStr = jedisClient.get(ITEM_INFO_KEY + ":" + itemId + ":BASE");
+            //判断Redis中是否有缓存
+            if (StringUtils.isNotBlank(jsonStr)) {
+                //设置有效期
+                jedisClient.expire(ITEM_INFO_KEY + ":" + itemId + ":BASE", ITEM_INFO_EXPIRE);
+                //Redis中取数据
+                return JsonUtils.jsonToPojo(jsonStr, TbItem.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //数据库中取数据
+        TbItem item = tbItemMapper.selectByPrimaryKey(itemId);
+        //注入缓存
+        try {
+            jedisClient.set(ITEM_INFO_KEY + ":" + itemId + ":BASE", JsonUtils.objectToJson(item));
+            jedisClient.expire(ITEM_INFO_KEY + ":" + itemId + ":BASE", ITEM_INFO_EXPIRE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
+    }
 
     @Override
     public EasyUIDataGriResult getItemList(Integer page, Integer rows) {
@@ -57,14 +132,12 @@ public class ItemServiceImpl implements ItemService {
     }
 
     /**
-     * 添加商品
+     * 添加商品到数据库中
      *
      * @param item
      * @param desc
-     * @return
      * @throws Exception
      */
-
     private Long createItemToSQL(TbItem item, String desc, String itemParams) throws Exception {
         Long itemID = IDUtils.genItemId();
         item.setId(itemID);
@@ -86,6 +159,17 @@ public class ItemServiceImpl implements ItemService {
         return itemID;
     }
 
+    /**
+     * 插入商品信息到数据库，并发送MQ消息
+     *
+     * @param item      商品类
+     * @param desc      商品描述
+     * @param itemParam
+     * @return com.owwang.mall.pojo.MallResult
+     * @Description TODO
+     * @Date 2019-12-29
+     * @auther Samuel
+     */
     @Override
     public MallResult createItem(TbItem item, String desc, String itemParam) throws Exception {
         //添加商品信息到数据库
