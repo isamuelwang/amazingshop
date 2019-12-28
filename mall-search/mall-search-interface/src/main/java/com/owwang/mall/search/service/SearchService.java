@@ -26,4 +26,14 @@ public interface SearchService {
      * @auther Samuel
      */
     public SearchResult search(String queryString,Integer page,Integer rows) throws Exception;
+
+    /**
+     * 根据ID更新单个索引
+     * @Description TODO
+     * @param itemId
+     * @return com.owwang.mall.pojo.MallResult
+     * @Date 2019-12-29
+     * @auther Samuel
+     */
+    MallResult UpdateSearchItemById(Long itemId) throws Exception;
 }

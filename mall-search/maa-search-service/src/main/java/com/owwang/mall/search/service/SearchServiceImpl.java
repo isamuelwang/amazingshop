@@ -88,4 +88,34 @@ public class SearchServiceImpl implements SearchService {
         search.setPageCount(pageCount);
         return search;
     }
+
+    /**
+     * 根据ID更新单个商品入索引库
+     * @Description TODO
+     * @param itemId 商品ID
+     * @return com.owwang.mall.pojo.MallResult
+     * @Date 2019-12-29
+     * @auther Samuel
+     */
+    public MallResult UpdateSearchItemById(Long itemId) throws Exception{
+        //1.注入mapper
+        SearchItem searchItem = searchItemMapper.getSearchItemById(itemId);
+        //2.把结果注入到索引库
+        //2.1创建solrserver
+        //2.2创建document对象
+        SolrInputDocument document = new SolrInputDocument();
+        //2.3向document中添加域
+        document.addField("id",searchItem.getId().toString());
+        document.addField("item_title",searchItem.getTitle());
+        document.addField("item_sell_point",searchItem.getSell_point());
+        document.addField("item_price",searchItem.getPrice());
+        document.addField("item_image",searchItem.getImage());
+        document.addField("item_category_name",searchItem.getCategory_name());
+        document.addField("item_desc",searchItem.getItem_desc());
+        //2.4向索引库添加文档
+        solrServer.add(document);
+        //2.5提交
+        solrServer.commit();
+        return MallResult.ok();
+    }
 }

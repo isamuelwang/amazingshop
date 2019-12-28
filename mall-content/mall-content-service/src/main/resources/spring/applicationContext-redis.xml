@@ -16,7 +16,7 @@
 	</bean>
 
 	<bean class="com.owwang.mall.content.jedis.JedisClientPool">
-		<property name="auth" value="12388888"></property>
+		<property name="auth" value="123456"></property>
 	</bean>
 
 <!--	&lt;!&ndash; 集群版 &ndash;&gt;

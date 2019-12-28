@@ -14,4 +14,7 @@ import java.util.List;
 public interface SearchItemMapper {
     //查询所有商品的搜索数据
     List<SearchItem> getSearchItemList();
+
+    //根据商品ID查询，查询商品搜索信息
+    SearchItem getSearchItemById(Long itemId);
 }

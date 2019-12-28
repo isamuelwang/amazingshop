@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.owwang.mall.search.mapper.SearchItemMapper" >
-  <select id="getSearchItemList" resultType="com.owwang.mall.pojo.SearchItem">
+  	<select id="getSearchItemList" resultType="com.owwang.mall.pojo.SearchItem">
+		SELECT
+		a.id,
+		a.title,
+		a.image,
+		a.price,
+		a.sell_point,
+		b.`name` AS category_name,
+		c.item_desc
+		FROM
+		tb_item a,
+		tb_item_cat b,
+		tb_item_desc c
+		WHERE
+		a.cid = b.id
+		AND a.id = c.item_id
+	</select>
+
+	<select id="getSearchItemById" parameterType="long" resultType="com.owwang.mall.pojo.SearchItem">
     SELECT
 	a.id,
 	a.title,
@@ -17,5 +35,8 @@
     WHERE
 	a.cid = b.id
 	AND a.id = c.item_id
+	AND a.id = #{itemId}
   </select>
+
+
 </mapper>
