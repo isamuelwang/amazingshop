@@ -8,6 +8,8 @@
         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+    <!-- 加载resource中properties资源 -->
+    <context:property-placeholder location="classpath:properties/*.properties" />
     <!-- 组件扫描 -->
     <context:component-scan base-package="com.owwang.mall.item.controller" />
     <!-- 注解驱动 -->
@@ -22,4 +24,10 @@
     <dubbo:application name="mall-item-web" />
     <dubbo:registry protocol="zookeeper" address="122.51.105.58:2181" />
     <dubbo:reference interface="com.owwang.mall.service.ItemService"	id="itemService" timeout="300000"/>
+
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
 </beans>
