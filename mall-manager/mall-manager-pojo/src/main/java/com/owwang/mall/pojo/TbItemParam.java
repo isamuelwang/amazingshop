@@ -1,17 +1,28 @@
 package com.owwang.mall.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbItemParam {
+public class TbItemParam implements Serializable {
     private Long id;
 
     private Long itemCatId;
+
+    private String itemCatName;
 
     private Date created;
 
     private Date updated;
 
     private String paramData;
+
+    public String getItemCatName() {
+        return itemCatName;
+    }
+
+    public void setItemCatName(String itemCatName) {
+        this.itemCatName = itemCatName;
+    }
 
     public Long getId() {
         return id;

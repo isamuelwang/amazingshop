@@ -25,7 +25,6 @@ public class TestPageHlper {
 		//4.调用mapper方法查询数据
 		TbItemExample example = new TbItemExample();//不设置条件
 		List<TbItem> list = tbItemMapper.selectByExample(example);//select * from tb_itm
-
 		//取分页信息
 		PageInfo<TbItem> info = new PageInfo<TbItem>(list);
 		

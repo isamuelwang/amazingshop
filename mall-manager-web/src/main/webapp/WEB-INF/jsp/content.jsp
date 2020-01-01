@@ -28,10 +28,14 @@
 $(function(){
 	var tree = $("#contentCategoryTree");
 	var datagrid = $("#contentList");
-	tree.tree({
+	tree.tree({//聚焦树
+		//点击树的叶子节点时触发
 		onClick : function(node){
+			//如果点击的节点时叶子节点
 			if(tree.tree("isLeaf",node.target)){
+				//重新发送url请求，加载数据
 				datagrid.datagrid('reload', {
+					//发送请求参数：分类的id
 					categoryId :node.id
 		        });
 			}
@@ -41,12 +45,15 @@ $(function(){
 var contentListToolbar = [{
     text:'新增',
     iconCls:'icon-add',
+	//处理点击事件触发
     handler:function(){
+    	//获取树中被选中节点
     	var node = $("#contentCategoryTree").tree("getSelected");
     	if(!node || !$("#contentCategoryTree").tree("isLeaf",node.target)){
     		$.messager.alert('提示','新增内容必须选择一个内容分类!');
     		return ;
     	}
+
     	TT.createWindow({
 			url : "/content-add"
 		}); 

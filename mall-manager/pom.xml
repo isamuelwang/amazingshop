@@ -20,5 +20,5 @@
 		<module>mall-manager-dao</module>
 		<module>mall-manager-interface</module>
 		<module>mall-manager-service</module>
-	</modules>
+    </modules>
 </project>

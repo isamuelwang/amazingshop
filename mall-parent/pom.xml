@@ -4,6 +4,9 @@
 	<groupId>com.owwang</groupId>
 	<artifactId>mall-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<modules>
+		<module>../mall-search-web</module>
+	</modules>
 	<packaging>pom</packaging>
 	<!-- 集中定义依赖版本号 -->
 	<properties>
@@ -35,9 +38,17 @@
 		<activemq.version>5.13.0</activemq.version>
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
+		<jsch.version>0.1.54</jsch.version>
+		<mail.version>1.4.7</mail.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<!-- JSCH -->
+			<dependency>
+				<groupId>com.jcraft</groupId>
+				<artifactId>jsch</artifactId>
+				<version>${jsch.version}</version>
+			</dependency>
 			<!-- 时间操作组件 -->
 			<dependency>
 				<groupId>joda-time</groupId>
@@ -112,6 +123,12 @@
 				<artifactId>pagehelper</artifactId>
 				<version>${pagehelper.version}</version>
 			</dependency>
+			<!-- 邮件 -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${mail.version}</version>
+			 </dependency>
 			<!-- MySql -->
 			<dependency>
 				<groupId>mysql</groupId>
@@ -258,8 +275,7 @@
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<version>2.2</version>
 				</plugin>
-
-				<!-- 配置打包时跳过测试 ，首次配置使用的时候会自动联网进行下载 -->
+				<!-- 配置打包时跳过测试 ，首次配置使用的时候会自动联网进行下载 加到哪就跳过哪-->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>

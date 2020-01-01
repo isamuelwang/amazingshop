@@ -15,13 +15,27 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"/>
+		<!-- 不超过8M  -->
+		<property name="maxUploadSize" value="8388608"/>
+	</bean>
+
+
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="mall-manager-web" />
-	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181" />
-	<dubbo:reference interface="com.owwang.mall.service.TestService" id="testService" />
-	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" />
-	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" />
-
+	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181"/>
+	<dubbo:reference interface="com.owwang.mall.service.TestService" id="testService" timeout="150000"/>
+	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.service.ItemParamService" id="itemParamService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.service.ItemParamItemService" id="itemParamItemService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ContentCategoryService" id="contentCategoryService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ContentService" id="contentService" timeout="150000" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ItemCatService" id="itemCatService" timeout="150000"/>
+	<dubbo:reference interface="com.owwang.mall.search.service.SearchService" id="searchService" timeout="300000"/>
+	<dubbo:reference protocol="hessian" interface="com.owwang.mall.service.PictureService" id="pictureService" timeout="300000" />
 	<!-- 静态资源不设卡 -->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
