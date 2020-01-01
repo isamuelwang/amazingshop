@@ -6,9 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>欧文网上商城-本仅用于学习交流，不作任何商业购物用途</title>
+<title>欧文购物网-本仅用于学习交流，不作任何商业购物用途</title>
 	<link rel="icon" type="image/x-icon" href="http://122.51.105.58/images/mall/icon/logo/logo.png"/>
-<meta name="description" content="欧文网上商城-本仅用于学习交流，不作任何商业购物用途 ">
+<meta name="description" content="欧文购物网-本仅用于学习交流，不作任何商业购物用途 ">
 <meta name="Keywords" content="仅用于学习交流，不作任何商业购物用途">
 <link href="/css/taotao.css" rel="stylesheet"/>
 <script type="text/javascript">

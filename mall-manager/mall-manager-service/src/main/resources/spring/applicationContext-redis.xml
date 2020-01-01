@@ -20,18 +20,18 @@
 	</bean>
 
 	<!--	&lt;!&ndash; 集群版 &ndash;&gt;
-        <bean class="redis.clients.jedis.JedisCluster">
+        <bean class="redis.clients.com.owwang.mall.sso.jedis.JedisCluster">
             <constructor-arg name="nodes">
                 <set>
-                    <bean class="redis.clients.jedis.HostAndPort">
+                    <bean class="redis.clients.com.owwang.mall.sso.jedis.HostAndPort">
                         <constructor-arg name="host" value="xxx"></constructor-arg>
                         <constructor-arg name="port" value="1"></constructor-arg>
                     </bean>
-                    <bean class="redis.clients.jedis.HostAndPort">
+                    <bean class="redis.clients.com.owwang.mall.sso.jedis.HostAndPort">
                         <constructor-arg name="host" value="xxx"></constructor-arg>
                         <constructor-arg name="port" value="1"></constructor-arg>
                     </bean>
-                    <bean class="redis.clients.jedis.HostAndPort">
+                    <bean class="redis.clients.com.owwang.mall.sso.jedis.HostAndPort">
                         <constructor-arg name="host" value="xxx"></constructor-arg>
                         <constructor-arg name="port" value="1"></constructor-arg>
                     </bean>

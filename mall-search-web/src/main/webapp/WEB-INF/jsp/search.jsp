@@ -43,6 +43,11 @@
 <c:forEach items="${itemList}" var="item">
 <li class="item-book" bookid="11078102">
 	<div class="p-img">
+		<c:if test="${empty item.images[0]}">
+			<a target="_blank" href="http://localhost:8087/item/${item.id }.html">
+				<img width="160" height="160" data-img="1" data-lazyload="/images/blank.gif" />
+			</a>
+		</c:if>
 		<a target="_blank" href="http://localhost:8087/item/${item.id }.html">
 			<img width="160" height="160" data-img="1" data-lazyload="${item.images[0]}" />
 		</a>
@@ -56,7 +61,7 @@
 		<i>欧文价：</i>
 		<strong>￥<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${item.price / 100 }"/></strong>
 	</div>
-	<div class="service">由 欧文商城 发货</div>
+	<div class="service">由 欧文购物网 发货</div>
 	<div class="extra">
 		<span class="star"><span class="star-white"><span class="star-yellow h5">&nbsp;</span></span></span>
 	</div>

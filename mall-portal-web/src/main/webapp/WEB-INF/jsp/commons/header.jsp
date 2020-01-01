@@ -6,7 +6,7 @@
 <!--shortcut end-->
 <div id="o-header-2013">
 	<div class="w" id="header-2013">
-		<div id="logo-2013" class="ld"><a href="/" hidefocus="true" clstag="homepage|keycount|home2013|02a"><b></b><img src="/images/taotao-logo.gif" width="270" height="60" alt="淘淘"></a></div>
+		<div id="logo-2013" class="ld"><a href="/" hidefocus="true" clstag="homepage|keycount|home2013|02a"><b></b><img src="/images/owwang-mall-logo.png" width="270" height="60" alt="欧文"></a></div>
 		<!--logo end-->
 		<div id="search-2013">
 			<div class="i-search ld">

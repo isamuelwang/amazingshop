@@ -101,6 +101,6 @@ public class JedisClientPool implements JedisClient {
 		Long hdel = jedis.hdel(key, field);
 		jedis.close();
 		return hdel;
-	}	
+	}
 
 }

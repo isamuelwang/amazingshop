@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ma-search-service</artifactId>
+    <artifactId>mall-search-service</artifactId>
     <packaging>war</packaging>
 
     <dependencies>

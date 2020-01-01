@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>${item.title } - 淘淘</title>
+	<title>${item.title } - 欧文购物网</title>
 	<script>var jdpts = new Object(); jdpts._st = new Date().getTime();</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="/css/taotao.css" media="all" />
@@ -85,7 +85,7 @@
 	</li>
 	<li id="summary-service" class="hide">
 		<div class="dt">服&#x3000;&#x3000;务：</div>
-		<div class="dd">由 淘淘 发货并提供售后服务。</div>
+		<div class="dd">由 欧文 发货并提供售后服务。</div>
 	</li>
 	<li id="summary-tips"  class="hide">
 		<div class="dt">温馨提示：</div>
@@ -102,7 +102,7 @@
 </ul><!--summary end-->
 		<div id="brand-bar" clstag="shangpin|keycount|product|btn-coll">
 	<dl class="slogens">
-		<dt>淘淘·正品保证</dt>
+		<dt>欧文·正品保证</dt>
 		<dd class="fore1">
 			<a target="_blank" href="http://help.360buy.com/help/question-67.html"><b></b><span>货到</span><span>付款</span></a>
 		</dd>
@@ -234,12 +234,12 @@
 			<!--知识库二级标签、标题-->
             <div id="promises">
 	<strong>服务承诺：</strong><br />
-	淘淘向您保证所售商品均为正品行货，淘淘自营商品开具机打发票或电子发票。凭质保证书及淘淘发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由淘淘联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。淘淘还为您提供具有竞争力的商品价格和<a href="http://www.jd.com/help/kdexpress.aspx" target="_blank">运费政策</a>，请您放心购买！
+	欧文向您保证所售商品均为正品行货，淘淘自营商品开具机打发票或电子发票。凭质保证书及淘淘发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由淘淘联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。欧文还为您提供具有竞争力的商品价格和<a href="http://www.jd.com/help/kdexpress.aspx" target="_blank">运费政策</a>，请您放心购买！
 	<br /><br />
 	注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！ 
 </div>
 <div id="state">
-	<strong>权利声明：</strong><br />淘淘上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是淘淘重要的经营资源，未经许可，禁止非法转载使用。
+	<strong>权利声明：</strong><br />欧文上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是淘淘重要的经营资源，未经许可，禁止非法转载使用。
 	<p><b>注：</b>本站商品信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。</p>
 </div>
 		</div><!--product-detail end-->
