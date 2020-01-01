@@ -1,6 +1,7 @@
 package com.owwang.mall.sso.service;
 
 import com.owwang.mall.pojo.MallResult;
+import com.owwang.mall.pojo.TbUser;
 
 /**
  * @Classname UserRegisterService
@@ -18,5 +19,15 @@ public interface UserRegisterService {
      * @Date 2020-01-01
      * @auther Samuel
      */
-    public MallResult checkData(String param,Integer type);
+    MallResult checkData(String param,Integer type);
+
+    /**
+     * 用户注册
+     * @Description TODO
+     * @param user 用户输入的注册信息
+     * @return com.owwang.mall.pojo.MallResult
+     * @Date 2020-01-01
+     * @auther Samuel
+     */
+    MallResult register(TbUser user);
 }

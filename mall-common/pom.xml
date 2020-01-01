@@ -9,6 +9,13 @@
 	<artifactId>mall-common</artifactId>
 	<!-- 依赖工具类的jar包 -->
 	<dependencies>
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- 邮件发送 -->
 		<dependency>
 			<groupId>javax.mail</groupId>

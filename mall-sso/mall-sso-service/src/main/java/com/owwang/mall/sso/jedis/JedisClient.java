@@ -10,7 +10,8 @@ public interface JedisClient {
 	Long ttl(String key);
 	Long incr(String key);
 	Long hset(String key, String field, String value);
-	String hget(String key, String field);	
+	String hget(String key, String field);
+	Long del(String key);
 	Long hdel(String key, String... field);//删除hkey
 	
 }
