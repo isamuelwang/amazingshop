@@ -16,6 +16,12 @@
 			<artifactId>mall-content-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- cart购物车依赖 -->
+		<dependency>
+			<groupId>com.owwang</groupId>
+			<artifactId>mall-cart-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
