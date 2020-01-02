@@ -21,7 +21,9 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -220,4 +222,30 @@ public class ItemServiceImpl implements ItemService {
         return MallResult.ok();
     }
 
+    public List<TbItem> getItemListByCidAndQ(Long cid,Integer quantity){
+        //判断redis中是否有数据
+        //如果有直接返回Redis中的值
+        try {
+            String PORTAL_LATEST9ITEMS = jedisClient.get("PORTAL:LATEST9ITEMS");
+            if(StringUtils.isNotBlank(PORTAL_LATEST9ITEMS)){
+                List<TbItem> items = JsonUtils.jsonToList(PORTAL_LATEST9ITEMS, TbItem.class);
+                return items;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //设置查询条件map
+        Map map = new HashMap<>();
+        map.put("cid",cid);
+        map.put("quantity",quantity);
+        List<TbItem> items = tbItemMapper.getItemListByCidAndQ(map);
+        //添加数据到redis中
+        try {
+            jedisClient.set("PORTAL:LATEST9ITEMS",JsonUtils.objectToJson(items));
+            jedisClient.expire("PORTAL:LATEST9ITEMS",1800);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return items;
+    }
 }

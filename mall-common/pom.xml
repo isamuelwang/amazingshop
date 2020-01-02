@@ -9,6 +9,11 @@
 	<artifactId>mall-common</artifactId>
 	<!-- 依赖工具类的jar包 -->
 	<dependencies>
+		<!-- Redis客户端 -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
 		<!-- servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

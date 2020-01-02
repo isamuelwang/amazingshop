@@ -2,8 +2,10 @@ package com.owwang.mall.mapper;
 
 import com.owwang.mall.pojo.TbItem;
 import com.owwang.mall.pojo.TbItemExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 public interface TbItemMapper {
     int countByExample(TbItemExample example);
@@ -27,4 +29,7 @@ public interface TbItemMapper {
     int updateByPrimaryKeySelective(TbItem record);
 
     int updateByPrimaryKey(TbItem record);
+
+    List<TbItem> getItemListByCidAndQ(Map map);
+
 }

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.Map;
+
 /**
  *	单机版本Redis实现
  * @Description TODO
@@ -92,6 +94,15 @@ public class JedisClientPool implements JedisClient {
 		String result = jedis.hget(key, field);
 		jedis.close();
 		return result;
+	}
+
+	@Override
+	public Map<String, String> hgetAll(String key) {
+		Jedis jedis = jedisPool.getResource();
+		jedis.auth(auth);
+		Map<String, String> stringStringMap = jedis.hgetAll(key);
+		jedis.close();
+		return stringStringMap;
 	}
 
 	@Override

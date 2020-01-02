@@ -1,6 +1,8 @@
 package com.owwang.mall.cart.jedis;
 
 
+import java.util.Map;
+
 public interface JedisClient {
 
 	String set(String key, String value);
@@ -10,7 +12,8 @@ public interface JedisClient {
 	Long ttl(String key);
 	Long incr(String key);
 	Long hset(String key, String field, String value);
-	String hget(String key, String field);	
+	String hget(String key, String field);
+	Map<String, String> hgetAll(String key);
 	Long hdel(String key, String... field);//删除hkey
 	
 }

@@ -26,6 +26,13 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
+    <!-- cart-service需要使用商品服务，需要添加manager-interface -->
+    <dependency>
+      <groupId>com.owwang</groupId>
+      <artifactId>mall-manager-interface</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
     <!-- 加入taotao-manager-mapper依赖 -->
     <dependency>
       <groupId>com.owwang</groupId>
@@ -95,7 +102,6 @@
       <artifactId>bonecp</artifactId>
       <version>0.8.0.RELEASE</version>
     </dependency>
-
   </dependencies>
 
   <build>

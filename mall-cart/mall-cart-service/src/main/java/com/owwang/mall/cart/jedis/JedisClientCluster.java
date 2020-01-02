@@ -3,6 +3,8 @@ package com.owwang.mall.cart.jedis;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisCluster;
 
+import java.util.Map;
+
 /**
  * 集群版本Redis实现
  *
@@ -53,6 +55,11 @@ public class JedisClientCluster implements JedisClient {
     @Override
     public String hget(String key, String field) {
         return jedisCluster.hget(key, field);
+    }
+
+    @Override
+    public Map<String, String> hgetAll(String key) {
+        return jedisCluster.hgetAll(key);
     }
 
     @Override
