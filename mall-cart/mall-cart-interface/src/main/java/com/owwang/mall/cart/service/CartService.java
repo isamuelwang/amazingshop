@@ -44,4 +44,37 @@ public interface CartService {
      * @auther Samuel
      */
     List<TbItem> queryCartListByUserId(Long userId);
+
+    /**
+     * 更新购物车商品数量
+     * @Description TODO
+     * @param userId 用户ID
+     * @param itemId 商品ID
+     * @param num 购物车商品数量
+     * @return com.owwang.mall.pojo.MallResult
+     * @Date 2020-01-03
+     * @auther Samuel
+     */
+    MallResult updateCartItemByItemId(Long userId,Long itemId,Integer num);
+
+    /**
+     * 删除购物车商品
+     * @Description TODO
+     * @param userId 用户ID
+     * @param itemId 商品ID
+     * @return com.owwang.mall.pojo.MallResult
+     * @Date 2020-01-03
+     * @auther Samuel
+     */
+    MallResult deleteByItemId(Long userId,Long itemId);
+
+    /**
+     * 根据输入json更新购物车
+     * @Description TODO
+     * @param objectToJson
+     * @return com.owwang.mall.pojo.MallResult
+     * @Date 2020-01-03
+     * @auther Samuel
+     */
+    MallResult updateCartItemByJson(List<TbItem> items,Long userId);
 }

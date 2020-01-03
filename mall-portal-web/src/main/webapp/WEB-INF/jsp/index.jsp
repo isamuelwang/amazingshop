@@ -151,7 +151,7 @@ pageConfig.DATA_MScroll = ${DATA_MScroll};
 </div><!--da end-->
 <div id="jdnews" class="m m1" >
 <div class="mt">
-<h2>淘淘快报</h2>
+<h2>欧文快报</h2>
 <div class="extra" clstag="homepage|keycount|home2013|11a"><a href="http://www.jd.com/moreSubject.aspx" target="_blank">更多快报&nbsp;&gt;</a></div>
 </div>
 <div class="mc">

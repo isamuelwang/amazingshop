@@ -34,23 +34,23 @@ public class CartServiceImpl implements CartService {
         //1.从Redis中查询该用户购物车列表
         TbItem tbItemInCart = queryItemByUserIdAndItemId(userId, item.getId());
         //2.判断购物车中是否有该商品
-        if(tbItemInCart==null){
+        if (tbItemInCart == null) {
             //如果不存在,则添加商品信息入购物车
             //设置图片
             String image = item.getImage();
-            if(StringUtils.isNotBlank(image)){
+            if (StringUtils.isNotBlank(image)) {
                 item.setImage(image.split(",")[0]);
             }
             //设置数量
             item.setNum(num);
             //把商品添加到Redis购物车中
-            jedisClient.hset(MALL_CART_REDIS_PRE_KEY+":"+userId,item.getId()+"",
+            jedisClient.hset(MALL_CART_REDIS_PRE_KEY + ":" + userId, item.getId() + "",
                     JsonUtils.objectToJson(item));
-        }else {
+        } else {
             //如果存在，则商品数量增加
-            tbItemInCart.setNum(tbItemInCart.getNum()+num);
+            tbItemInCart.setNum(tbItemInCart.getNum() + num);
             //重新设置回去
-            jedisClient.hset(MALL_CART_REDIS_PRE_KEY+":"+userId,item.getId()+"",
+            jedisClient.hset(MALL_CART_REDIS_PRE_KEY + ":" + userId, item.getId() + "",
                     JsonUtils.objectToJson(tbItemInCart));
         }
         return MallResult.ok();
@@ -60,7 +60,7 @@ public class CartServiceImpl implements CartService {
     public TbItem queryItemByUserIdAndItemId(Long userId, Long itemId) {
         String str = jedisClient.hget(MALL_CART_REDIS_PRE_KEY + ":" +
                 userId, itemId + "");
-        if(StringUtils.isNotBlank(str)){
+        if (StringUtils.isNotBlank(str)) {
             TbItem item = JsonUtils.jsonToPojo(str, TbItem.class);
             return item;
         }
@@ -72,9 +72,9 @@ public class CartServiceImpl implements CartService {
         Map<String, String> itemMapInCart = jedisClient.hgetAll(
                 MALL_CART_REDIS_PRE_KEY + ":" + userId);
         Set<Map.Entry<String, String>> set = itemMapInCart.entrySet();
-        if(set!=null){
+        if (set != null) {
             List<TbItem> list = new ArrayList<>();
-            for(Map.Entry<String,String> entry : set){
+            for (Map.Entry<String, String> entry : set) {
                 TbItem tbItem = JsonUtils.jsonToPojo(entry.getValue(), TbItem.class);
                 list.add(tbItem);
             }
@@ -82,4 +82,32 @@ public class CartServiceImpl implements CartService {
         }
         return null;
     }
+
+    @Override
+    public MallResult updateCartItemByItemId(Long userId, Long itemId, Integer num) {
+        TbItem item = queryItemByUserIdAndItemId(userId, itemId);
+        if (item != null) {
+            item.setNum(num);
+            jedisClient.hset(MALL_CART_REDIS_PRE_KEY + ":" + userId,
+                    itemId + "",JsonUtils.objectToJson(item));
+        }
+        return MallResult.ok();
+    }
+
+    @Override
+    public MallResult deleteByItemId(Long userId, Long itemId) {
+        jedisClient.hdel(MALL_CART_REDIS_PRE_KEY + ":" + userId, itemId + "");
+        return MallResult.ok();
+    }
+
+    @Override
+    public MallResult updateCartItemByJson(List<TbItem> items,Long userId) {
+        for(TbItem item : items){
+            jedisClient.hset(MALL_CART_REDIS_PRE_KEY + ":" + userId,
+                    item.getId()+"",JsonUtils.objectToJson(item));
+        }
+        return MallResult.ok();
+    }
+
+
 }
