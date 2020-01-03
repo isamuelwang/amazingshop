@@ -89,6 +89,8 @@ public class CartController {
         MallResult result = userLoginService.getUserByToken(token);
         //判断是否已经登录
         if (result.getStatus() == 200) {
+            //同步本地购物车
+            loginMergeCart(request);
             TbUser user = (TbUser) result.getData();
             List<TbItem> tbItems = cartService.queryCartListByUserId(user.getId());
             request.setAttribute("cartList", tbItems);
