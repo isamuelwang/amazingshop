@@ -82,7 +82,7 @@ public class CartController {
      * @auther Samuel
      */
     @RequestMapping("/cart/cart")
-    public String showCart(HttpServletRequest request) {
+    public String showCart(HttpServletRequest request,HttpServletResponse response) {
         //通过token获取用户信息
         String token = CookieUtils.getCookieValue(request, "TT_TOKEN");
         //根据token调用SSO服务，获取用户信息
@@ -90,7 +90,7 @@ public class CartController {
         //判断是否已经登录
         if (result.getStatus() == 200) {
             //同步本地购物车
-            loginMergeCart(request);
+            loginMergeCart(request,response);
             TbUser user = (TbUser) result.getData();
             List<TbItem> tbItems = cartService.queryCartListByUserId(user.getId());
             request.setAttribute("cartList", tbItems);
@@ -162,7 +162,7 @@ public class CartController {
      */
     @RequestMapping("/cart/syn")
     @ResponseBody
-    public MallResult loginMergeCart(HttpServletRequest request){
+    public MallResult loginMergeCart(HttpServletRequest request,HttpServletResponse response){
         //本地购物车
         List<TbItem> localCart = getCartList(request);
         //通过token获取用户信息
@@ -183,6 +183,8 @@ public class CartController {
             redisCart.add(lItem);
         }
         MallResult result1 = cartService.updateCartItemByJson(redisCart, user.getId());
+        //删除本地数据
+        CookieUtils.deleteCookie(request,response,TT_CART_KEY);
         return result1;
     }
 

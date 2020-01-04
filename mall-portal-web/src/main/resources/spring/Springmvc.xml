@@ -22,8 +22,8 @@
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="mall-portal-web" />
 	<dubbo:registry protocol="zookeeper" address="122.51.105.58:2181" />
-	<dubbo:reference interface="com.owwang.mall.content.service.ContentService" id="contentService" />
-	<dubbo:reference interface="com.owwang.mall.cart.service.CartService" id="cartService" />
-	<dubbo:reference interface="com.owwang.mall.sso.service.UserLoginService" id="userLoginService" />
-	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" />
+	<dubbo:reference interface="com.owwang.mall.content.service.ContentService" id="contentService" timeout="300000" />
+	<dubbo:reference interface="com.owwang.mall.cart.service.CartService" id="cartService" timeout="300000"/>
+	<dubbo:reference interface="com.owwang.mall.sso.service.UserLoginService" id="userLoginService" timeout="300000" />
+	<dubbo:reference interface="com.owwang.mall.service.ItemService" id="itemService" timeout="300000"/>
 </beans>

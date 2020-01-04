@@ -27,6 +27,16 @@
       <artifactId>mall-order-interface</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    <groupId>com.owwang</groupId>
+    <artifactId>mall-sso-interface</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+    <dependency>
+      <groupId>com.owwang</groupId>
+      <artifactId>mall-cart-interface</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
     <!-- dubbo相关 -->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -51,7 +61,6 @@
       <groupId>com.github.sgroschupf</groupId>
       <artifactId>zkclient</artifactId>
     </dependency>
-
     <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>

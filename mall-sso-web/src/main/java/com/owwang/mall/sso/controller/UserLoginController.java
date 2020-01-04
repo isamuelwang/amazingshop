@@ -71,16 +71,15 @@ public class UserLoginController {
 
     /**
      * 安全退出
-     * @param request
+     * @param token
      * @return com.owwang.mall.pojo.MallResult
      * @Description TODO
      * @Date 2020-01-01
      * @auther Samuel
      */
-    @RequestMapping(value = "/user/logout")
+    @RequestMapping(value = "/user/logout/{token}")
     @ResponseBody
-    public MallResult logout(HttpServletRequest request) {
-        String token = CookieUtils.getCookieValue(request, "TT_TOKEN");
+    public MallResult logout(@PathVariable String token) {
         MallResult result = userLoginService.logout(token);
         return result;
     }

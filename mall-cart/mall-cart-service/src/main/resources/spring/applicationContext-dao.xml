@@ -42,6 +42,6 @@
     <!-- 配置Mapper扫描 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 配置Mapper扫描包 -->
-        <property name="basePackage" value="com.taotao.manager.mapper" />
+        <property name="basePackage" value="com.mall.manager.mapper" />
     </bean>
 </beans>

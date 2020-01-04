@@ -17,6 +17,12 @@
   <name>mall-order-service</name>
 
   <dependencies>
+    <!-- orderservice interface -->
+    <dependency>
+      <groupId>com.owwang</groupId>
+      <artifactId>mall-order-interface</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
     <!-- dubbo相关 -->
     <dependency>
       <groupId>com.alibaba</groupId>
