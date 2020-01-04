@@ -18,9 +18,9 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 	<dubbo:protocol name="hessian" port="20887"/>
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="com.owwang.mall.service.TestService" ref="testServiceImpl" />
-	<dubbo:service interface="com.owwang.mall.service.ItemService" ref="itemServiceImpl" />
-	<dubbo:service interface="com.owwang.mall.service.ItemParamService" ref="itemParamServiceImpl" />
-	<dubbo:service interface="com.owwang.mall.service.ItemParamItemService" ref="itemParamItemServiceImpl" />
-	<dubbo:service protocol="hessian" interface="com.owwang.mall.service.PictureService" ref="pictureServiceImpl"/>
+	<dubbo:service interface="com.owwang.mall.service.TestService" ref="testServiceImpl" timeout="300000"/>
+	<dubbo:service interface="com.owwang.mall.service.ItemService" ref="itemServiceImpl" timeout="300000"/>
+	<dubbo:service interface="com.owwang.mall.service.ItemParamService" ref="itemParamServiceImpl" timeout="300000"/>
+	<dubbo:service interface="com.owwang.mall.service.ItemParamItemService" ref="itemParamItemServiceImpl" timeout="300000"/>
+	<dubbo:service protocol="hessian" interface="com.owwang.mall.service.PictureService" ref="pictureServiceImpl" timeout="300000"/>
 </beans>

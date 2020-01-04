@@ -5,6 +5,8 @@ import com.owwang.mall.pojo.MallResult;
 import com.owwang.mall.pojo.TbItem;
 import com.owwang.mall.pojo.TbItemDesc;
 
+import java.util.List;
+
 /**
  * 商品相关处理的service接口
  * @author Samuel
@@ -46,5 +48,16 @@ public interface ItemService {
 	 * @return
 	 */
 	MallResult createItem(TbItem item,String desc,String itemParam) throws Exception;
+
+	/**
+	 * 根据查找数量n和商品目录查询n条商品信息集合
+	 * @Description TODO
+	 * @param cid 商品目录
+	 * @param quantity 需要查找的商品数量
+	 * @return java.util.List<com.owwang.mall.pojo.TbItem>
+	 * @Date 2020-01-03
+	 * @auther Samuel
+	 */
+	List<TbItem> getItemListByCidAndQ(Long cid,Integer quantity);
 
 }
